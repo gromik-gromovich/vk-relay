@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var p = new URLSearchParams(location.hash.slice(1));
+var token = p.get('access_token');
+var uid = p.get('user_id');
+if (token && window.opener) {
+  window.opener.postMessage({access_token: token, user_id: uid}, '*');
+  window.close();
+}
+</script>
+</body>
+</html>
